@@ -6,11 +6,11 @@ I was bored, so I made a custom print function in C without using any external l
 
 ## Features
 
-* String-only support (for now)
+\- String-only support (for now)
 
-* **Escape Sequences** supported
+\- **Escape Sequences** supported
 
-* One argument per call
+\- One argument per call
 
 ## Usage
 
