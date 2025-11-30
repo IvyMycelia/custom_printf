@@ -4,9 +4,13 @@ I was bored, so I made a custom print function in C without using any external l
 
 *I hate assembly so much.*
 
-### Usage:
+## Usage:
+
+### Option 1:
 1. Download `print.c` & `print.h`
-2. Use in your C Project:
+2. Place `print.c` into your source directory
+3. Place `print.h` into your include directory
+4. Include the headers in your C file:
 ```c
 #include "print.h"
 
@@ -15,3 +19,18 @@ int main() {
     return 0;
 }
 ```
+
+### Option 2:
+1. Download **print** package and place it somewhere accessible.
+2. Include the headers in your C file:
+    ```c
+    #include "print.h"
+    
+    // Code..
+    ```
+3. Link against the static library while building:
+    ```bash
+    gcc main.c -I/path/to/print/include -L/path/to/print/lib -lrprint -o my_program
+    ```
+
+
