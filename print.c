@@ -3,7 +3,7 @@
 //
 
 #if defined(__x86_64__)
-    #define SYS_WRITE()                     \
+    #define SYS_WRITE(c, l)                 \
         asm volatile (                      \
             "movq $0x2000004, %%rax\n"      \
             "movq $1, %%rdi\n"              \
@@ -14,40 +14,17 @@
             : "r"(c), "r"(l)                \
             : "%rax", "%rdi", "%rsi", "%rdx"\
         );
-
-    #define SYS_EXIT()                      \
-        asm volatile (                      \
-            "movq $0x2000001, %%rax\n"      \
-            "movq $0, %%rdi\n"              \
-            "syscall\n"                     \
-            :                               \
-            : "r"(c), "r"(l)                \
-            : "%rax", "%rdi", "%rsi", "%rdx"\
-        );
-
 #elif defined(__aarch64__)
-    #define SYS_WRITE()                 \
-        asm volatile (                  \
-            "mov x0, #1\n"              \
-            "mov x1, %0\n"              \
-            "mov x2, %1\n"              \
-            "ldr x16, =0x2000004\n"     \
-            "svc #0\n"                  \
-            :                           \
-            : "r"(c), "r"(l)            \
-            : "x0", "x1", "x2", "x16"   \
-        );
-
-    #define SYS_EXIT()              \
-        asm volatile (              \
-            "mov x0, #0\n"          \
-            "ldr x16, =0x2000001\n" \
-            "svc #0"                \
-            :                       \
-            :                       \
-            : "x0", "x16"           \
-        );
-
+#define SYS_WRITE(c, l)                          \
+    do {                                         \
+        const char *buf = (c);                   \
+        unsigned long len = (l);                 \
+        register unsigned long x0 asm("x0") = 1; /* stdout */ \
+        register const char *x1 asm("x1") = buf;           \
+        register unsigned long x2 asm("x2") = len;         \
+        register unsigned long x16 asm("x16") = 0x2000004; \
+        asm volatile("svc #0" : : "r"(x0),"r"(x1),"r"(x2),"r"(x16) : "memory"); \
+    } while(0)
 #else
     #error "Unrecognized OS Architecture"
 #endif
@@ -55,14 +32,11 @@
 int print(char *c) {
     // Measure length
     unsigned long l = 0;
-    char *p = c;
-    while (*p != '\0') l++;
+    char *p;
+    for (p = c; *p; p++) l++;
 
     // Write
-    SYS_WRITE();
-
-    // Exit
-    SYS_EXIT();
+    SYS_WRITE(c, l);
 
     return 0;
 }
