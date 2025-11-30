@@ -1,3 +1,10 @@
+/*
+ * `main.c`
+ * This is here just for debugging purposes.
+ * If you want to use `print` itself, you only
+ * have to download `print.c` and `print.h`.
+ */
+
 #include "print.h"
 
 int main(int argc, char *argv[]) {
