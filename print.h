@@ -5,6 +5,6 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-int print(char *c);
+void print(char *c);
 
 #endif //PRINT_H

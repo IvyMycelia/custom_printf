@@ -29,7 +29,7 @@
     #error "Unrecognized OS Architecture"
 #endif
 
-int print(char *c) {
+void print(char *c) {
     // Measure length
     unsigned long l = 0;
     char *p;
@@ -37,6 +37,4 @@ int print(char *c) {
 
     // Write
     SYS_WRITE(c, l);
-
-    return 0;
 }
