@@ -4,7 +4,15 @@ I was bored, so I made a custom print function in C without using any external l
 
 *I hate assembly so much.*
 
-## Usage:
+## Features
+
+* String-only support (for now)
+
+* **Escape Sequences** supported
+
+* One argument per call
+
+## Usage
 
 ### Option 1:
 1. Download `print.c` & `print.h`
