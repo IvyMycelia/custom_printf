@@ -2,9 +2,9 @@
 // Created by Ivy on 11/29/25.
 //
 
-#ifndef CUSTOM_PRINTF_PRINT_H
-#define CUSTOM_PRINTF_PRINT_H
+#ifndef PRINT_H
+#define PRINT_H
 
 int print(char *c);
 
-#endif //CUSTOM_PRINTF_PRINT_H
+#endif //PRINT_H
