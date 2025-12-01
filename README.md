@@ -4,6 +4,8 @@ I was bored, so I made a custom print function in C without using any external l
 
 *I hate assembly so much.*
 
+---
+
 ## Features
 
 \- String-only support (for now)
@@ -11,6 +13,8 @@ I was bored, so I made a custom print function in C without using any external l
 \- **Escape Sequences** supported
 
 \- One argument per call
+
+---
 
 ## Usage
 
@@ -40,5 +44,27 @@ int main() {
     ```bash
     gcc main.c -I/path/to/print/include -L/path/to/print/lib -lrprint -o my_program
     ```
+   
+---
 
+## Frequently Asked Questions
 
+### How To Use This On Windows?
+
+**Answer:** 
+   
+**Step One:** Download a [Linux Distro](https://www.linux.org/pages/download/)
+
+**Step Two:** Refer to [Usage](#usage)
+
+### Will Windows Support Be Added?
+
+**Answer:** No, windows support will not be added. Windows changes their syscall codes every version update. I'd have to use an external source file or library for this to work (which is against the project).
+
+### Does This Work On Linux?
+
+**Answer:** Yes, this code should run on many Linux distros. If you have a specific issue, please open a [Pull Request](https://github.com/IvyMycelia/custom_printf/pulls)!
+
+### What About macOS?
+
+**Answer:** It should, I made this on my Macbook.
