@@ -5,7 +5,7 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-void print(char *c);
+void print(const char *c);
 void print_char(char c);
 
 #endif //PRINT_H

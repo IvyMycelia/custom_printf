@@ -64,7 +64,7 @@ void print(const char *c) {
                 case '\\': print_char('\\'); break;
                 case '"': print_char('"'); break;
                 case 'r': print_char('\r'); break;
-                default: print_char(*s); break;
+                default: print_char(*c); break;
             }
             c++;
         } else {
